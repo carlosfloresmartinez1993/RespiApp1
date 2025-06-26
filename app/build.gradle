@@ -39,5 +39,7 @@ dependencies {
     androidTestImplementation libs.espresso.core
     //libreria para animaciones
     implementation 'com.airbnb.android:lottie:3.0.1'
+    //libreria para boton redondo
+    implementation 'com.google.android.material:material:1.12.0'
 
 }
