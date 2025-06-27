@@ -13,6 +13,12 @@
         android:theme="@style/Theme.RespiApp1"
         tools:targetApi="31">
         <activity
+            android:name=".Fisioterapia"
+            android:exported="false" />
+        <activity
+            android:name=".Conoce_tu_respiracion"
+            android:exported="false" />
+        <activity
             android:name=".Monitoreo"
             android:exported="false" />
         <activity

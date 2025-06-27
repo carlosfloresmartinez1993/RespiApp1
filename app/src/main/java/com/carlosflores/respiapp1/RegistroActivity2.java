@@ -51,8 +51,7 @@ public class RegistroActivity2 extends AppCompatActivity {
                         Intent intent = new Intent(RegistroActivity2.this, MenuPrincipal.class); // reemplaza MenuPrincipal con tu destino
                         startActivity(intent);
                         finish(); // Opcional: para que no puedan volver con el botón "atrás"
-                    }, 2000); // 1.5 segundos de espera
-
+                    }, 0);
 
                 }else {
                     Toast.makeText( RegistroActivity2.this,"ERROR AL GUARDAR REGISTRO  ", Toast.LENGTH_LONG).show();
