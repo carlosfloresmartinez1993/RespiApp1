@@ -5,12 +5,28 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:textAlignment="center"
     tools:context=".Monitoreo">
+
+    <TextView
+        android:id="@+id/instrucciones_mon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Recuerda inhalar y exhalar por la nariz"
+        android:textAlignment="center"
+        android:textSize="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.592" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageButton2"
-        android:layout_width="198dp"
-        android:layout_height="193dp"
+        android:layout_width="250dp"
+        android:layout_height="240dp"
         android:background="@drawable/btn_circular_background"
         android:backgroundTint="#7dd5f6"
         android:clickable="true"
@@ -19,8 +35,55 @@
         android:tint="#020202"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.323"
         app:shapeAppearanceOverlay="@style/CircularImageShape"
         app:srcCompat="@android:drawable/ic_btn_speak_now" />
+
+    <TextView
+        android:id="@+id/titulo_mon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Monitoreo Respiratorio"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143" />
+
+    <Button
+        android:id="@+id/btnGrabar"
+        android:layout_width="219dp"
+        android:layout_height="100dp"
+        android:text="Grabar"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:backgroundTint="#7dd5f6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.749" />
+
+    <Button
+        android:id="@+id/btnEnviar"
+        android:layout_width="219dp"
+        android:layout_height="100dp"
+        android:text="Enviar"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:backgroundTint="#7dd5f6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.935" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
