@@ -1,6 +1,9 @@
 package com.carlosflores.respiapp1;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,19 @@ public class Monitoreo extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        //codigo mio
+        ImageView btn_regresar = findViewById(R.id.regresar_monitoreo);
+
+        //redirigir si aprieto regresar
+        btn_regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Ir a otra actividad
+                Intent intent = new Intent(Monitoreo.this, MenuPrincipal.class);
+                startActivity(intent);
+            }
         });
     }
 }

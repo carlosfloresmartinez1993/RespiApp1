@@ -10,17 +10,17 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
+        android:layout_width="318dp"
+        android:layout_height="53dp"
         android:fontFamily="sans-serif-black"
-        android:text="Conoce tu respiración"
-        android:textSize="20dp"
+        android:text=" Conoce tu respiración"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.056" />
 
     <ImageView
         android:id="@+id/regesar"
@@ -39,7 +39,7 @@
 
     <ImageView
         android:id="@+id/respiracion_saludable"
-        android:layout_width="388dp"
+        android:layout_width="350dp"
         android:layout_height="86dp"
         android:clickable="true"
         android:focusable="true"
@@ -54,7 +54,7 @@
 
     <ImageView
         android:id="@+id/frecuencia_resoiratoria"
-        android:layout_width="384dp"
+        android:layout_width="350dp"
         android:layout_height="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
 
     <ImageView
         android:id="@+id/afecta_pulmones"
-        android:layout_width="390dp"
+        android:layout_width="350dp"
         android:layout_height="79dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
 
     <ImageView
         android:id="@+id/cuidados_preventivos"
-        android:layout_width="392dp"
+        android:layout_width="350dp"
         android:layout_height="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
 
     <ImageView
         android:id="@+id/consultar_medico"
-        android:layout_width="392dp"
+        android:layout_width="350dp"
         android:layout_height="85dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
