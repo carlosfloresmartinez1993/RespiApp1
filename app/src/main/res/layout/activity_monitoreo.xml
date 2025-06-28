@@ -40,7 +40,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.323"
         app:shapeAppearanceOverlay="@style/CircularImageShape"
-        app:srcCompat="@android:drawable/ic_btn_speak_now" />
+        app:srcCompat="@android:drawable/ic_btn_speak_now"
+        android:contentDescription="@string/botones"/>
 
     <TextView
         android:id="@+id/titulo_mon"
