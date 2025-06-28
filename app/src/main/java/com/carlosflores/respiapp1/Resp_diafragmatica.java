@@ -35,33 +35,7 @@ public class Resp_diafragmatica extends AppCompatActivity {
             return insets;
         });
 
-        ImageView btn_regresar = findViewById(R.id.regresar_fisioterapia1);
-        //redirigir si aprieto regresar
-        btn_regresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //parar audios
-                onDestroy();
-                // Ir a otra actividad
-                Intent intent = new Intent(Resp_diafragmatica.this, Fisioterapia.class);
-                startActivity(intent);
-            }
-        });
-        //redirigir a iniciar ejercicio
 
-         Button btn_resp_diafragmatica = findViewById(id.btn_resp_diafragmatica);
-        //redirigir si aprieto regresar
-        btn_resp_diafragmatica.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //parar audios
-                onDestroy();
-                // Ir a otra actividad
-                Intent intent = new Intent(Resp_diafragmatica.this, Resp_diafragmatica_iniciar.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
 
         WebView webView = findViewById(id.video_resp_diafragmatica);
         webView.setWebChromeClient(new WebChromeClient()); // Necesario para reproducir video
@@ -124,5 +98,27 @@ public class Resp_diafragmatica extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer = null;
         }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica);
+        btn_resp_diafragmatica_iniciar.setOnClickListener(v -> {
+            //parar audios
+            onDestroy();
+            Intent intent = new Intent(this, Resp_diafragmatica_iniciar.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+        });
+
+        ImageView btn_regresar = findViewById(R.id.regresar_fisioterapia1);
+        btn_regresar.setOnClickListener(v -> {
+            //parar audios
+            onDestroy();
+            Intent intent = new Intent(this, Fisioterapia.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+        });
     }
 }

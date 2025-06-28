@@ -30,20 +30,15 @@ public class Resp_diafragmatica_parar extends AppCompatActivity {
         });
 
     }
+    @Override
     protected void onStart() {
         super.onStart();
-        Button btn_resp_diafragmatica_parar = findViewById(R.id.btn_respiracion_diafragmatica_parar);
-        //redirigir a pantalla de terminar
-        btn_resp_diafragmatica_parar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //parar audios
-                onDestroy();
-                // Ir a otra actividad
-                Intent intent = new Intent(Resp_diafragmatica_parar.this, Resp_diafragmatica.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
+
+        Button btn_resp_diafragmatica_parar = findViewById(R.id.btn_resp_diafragmatica_iniciar);
+        btn_resp_diafragmatica_parar.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Resp_diafragmatica.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
         });
     }
 }

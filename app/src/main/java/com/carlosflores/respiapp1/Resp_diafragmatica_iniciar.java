@@ -28,23 +28,16 @@ public class Resp_diafragmatica_iniciar extends AppCompatActivity {
 
 
     }
+    @Override
     protected void onStart() {
         super.onStart();
-        GifImageView gif = findViewById(R.id.gifView);
-        gif.setImageResource(R.drawable.circulo_guia_animado); // o usa Glide aquí
 
         Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica_iniciar);
-        //redirigir a pantalla de terminar
-        btn_resp_diafragmatica_iniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //parar audios
-                onDestroy();
-                // Ir a otra actividad
-                Intent intent = new Intent(Resp_diafragmatica_iniciar.this, Resp_diafragmatica_parar.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
+        btn_resp_diafragmatica_iniciar.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Resp_diafragmatica_parar.class);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
         });
     }
+
 }
