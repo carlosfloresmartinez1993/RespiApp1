@@ -41,5 +41,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.0.1'
     //libreria para boton redondo
     implementation 'com.google.android.material:material:1.12.0'
+    //animar los gif
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.27'
 
 }

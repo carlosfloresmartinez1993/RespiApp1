@@ -2,8 +2,10 @@ package com.carlosflores.respiapp1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.Chronometer;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,39 +13,36 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Fisioterapia extends AppCompatActivity {
+import pl.droidsonroids.gif.GifImageView;
+
+public class Resp_diafragmatica_parar extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_fisioterapia);
+        setContentView(R.layout.activity_resp_diafragmatica_parar);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-      //codigo mio
-        ImageView btn_regresar = findViewById(R.id.regresar_fisioterapia);
-        ImageView btn_resp_diafragmatica = findViewById(R.id.resp_diafragmatica);
 
-        //redirigir si aprieto regresar
-        btn_regresar.setOnClickListener(new View.OnClickListener() {
+    }
+    protected void onStart() {
+        super.onStart();
+        Button btn_resp_diafragmatica_parar = findViewById(R.id.btn_respiracion_diafragmatica_parar);
+        //redirigir a pantalla de terminar
+        btn_resp_diafragmatica_parar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //parar audios
+                onDestroy();
                 // Ir a otra actividad
-                Intent intent = new Intent(Fisioterapia.this, MenuPrincipal.class);
+                Intent intent = new Intent(Resp_diafragmatica_parar.this, Resp_diafragmatica.class);
                 startActivity(intent);
-            }
-        });
-
-        //redirigir si aprieto diafragmatica
-        btn_resp_diafragmatica.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Ir a otra actividad
-                Intent intent = new Intent(Fisioterapia.this, Resp_diafragmatica.class);
-                startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         });
     }
