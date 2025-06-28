@@ -8,6 +8,8 @@
     <!-- Registro -->
     <string name="nombre">Nombre</string>
     <string name="edad">Edad</string>
+    <!-- botones -->
+    <string name="botones">Descripción</string>
 
 
 </resources>
