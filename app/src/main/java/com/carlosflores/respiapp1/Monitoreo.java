@@ -1,17 +1,34 @@
 package com.carlosflores.respiapp1;
 
+import android.Manifest;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Monitoreo extends AppCompatActivity {
+    private static int MICROPHONE_PERMISSION_CODE = 200;
+    private boolean estaGrabando = false;
+    MediaRecorder grabador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +43,8 @@ public class Monitoreo extends AppCompatActivity {
 
         //codigo mio
         ImageView btn_regresar = findViewById(R.id.regresar_monitoreo);
+        Button btnGrabar = findViewById(R.id.btnGrabar);
+        Button btnEnviar = findViewById(R.id.btnEnviar);
 
         //redirigir si aprieto regresar
         btn_regresar.setOnClickListener(new View.OnClickListener() {
@@ -36,5 +55,75 @@ public class Monitoreo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnGrabar.setOnClickListener(v -> {
+            if (!estaGrabando) {
+                iniciarGrabacion(v);
+                btnGrabar.setText("Detener");
+                estaGrabando = true;
+            } else {
+                detenerGrabacion(v);
+                btnGrabar.setText("Grabar");
+                estaGrabando = false;
+            }
+        });
+
+        btnEnviar.setOnClickListener(v -> {
+
+        });
+
+        if (existeMicrofono()) {
+            permisoMicrofono();
+        }
+    }
+
+    public void iniciarGrabacion(View v) {
+        try {
+            grabador = new MediaRecorder();
+            grabador.setAudioSource(MediaRecorder.AudioSource.MIC);
+            grabador.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            grabador.setOutputFile(rutaGrabacion());
+            grabador.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+            grabador.prepare();
+            grabador.start();
+            Toast.makeText(this,"Grabando",Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void detenerGrabacion(View v) {
+        grabador.stop();
+        grabador.release();
+        grabador = null;
+        Toast.makeText(this,"Grabacion finalizada",Toast.LENGTH_LONG).show();
+    }
+
+    public void enviarGrabacion() {
+
+    }
+
+    private boolean existeMicrofono() {
+        if(this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_MICROPHONE)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void permisoMicrofono() {
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
+                == PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.RECORD_AUDIO}, MICROPHONE_PERMISSION_CODE);
+        }
+    }
+
+    private String rutaGrabacion() {
+        ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
+        File directorioGrabar = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm_ss").format(new Date());
+        String nombreArch = "Grabacion_" + timeStamp + ".mp3";
+        File file = new File(directorioGrabar, nombreArch);
+        return file.getPath();
     }
 }

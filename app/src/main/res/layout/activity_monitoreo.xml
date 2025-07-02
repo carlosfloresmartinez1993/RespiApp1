@@ -25,14 +25,15 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageButton2"
-        android:layout_width="250dp"
-        android:layout_height="240dp"
+        android:layout_width="223dp"
+        android:layout_height="231dp"
         android:background="@drawable/btn_circular_background"
-        android:backgroundTint="#7dd5f6"
+        android:backgroundTint="#241B6A"
         android:clickable="true"
+        android:contentDescription="@string/botones"
         android:focusable="true"
         android:scaleType="centerCrop"
-        android:tint="#020202"
+        android:tint="#F2F2F2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -40,8 +41,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.323"
         app:shapeAppearanceOverlay="@style/CircularImageShape"
-        app:srcCompat="@android:drawable/ic_btn_speak_now"
-        android:contentDescription="@string/botones"/>
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
     <TextView
         android:id="@+id/titulo_mon"
@@ -89,14 +89,14 @@
 
     <ImageView
         android:id="@+id/regresar_monitoreo"
-        android:layout_width="165dp"
-        android:layout_height="51dp"
+        android:layout_width="123dp"
+        android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.00"
+        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/btnregresar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

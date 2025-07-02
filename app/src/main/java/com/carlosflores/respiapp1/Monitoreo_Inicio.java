@@ -2,8 +2,8 @@ package com.carlosflores.respiapp1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,13 +12,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MenuPrincipal extends AppCompatActivity {
+public class Monitoreo_Inicio extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_menu_principal);
+        setContentView(R.layout.activity_monitoreo_inicio);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -26,40 +26,25 @@ public class MenuPrincipal extends AppCompatActivity {
         });
 
         //codigo mio
-        ImageView imagenBotonRespiracion = findViewById(R.id.respiracion);
-        ImageView imagenBotonFisioterapia = findViewById(R.id.fisioterapia);
-        ImageView imagenBotonMonitoreo = findViewById(R.id.monitoreo);
+        ImageView btn_regresar = findViewById(R.id.regresar_monitoreo);
+        Button btnContinuar = findViewById(R.id.btnContinuar);
 
-        imagenBotonRespiracion.setOnClickListener(new View.OnClickListener() {
+        //redirigir si aprieto regresar
+        btn_regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Ir a otra actividad
-                Intent intent = new Intent(MenuPrincipal.this, Conoce_tu_respiracion.class);
+                Intent intent = new Intent(Monitoreo_Inicio.this, MenuPrincipal.class);
                 startActivity(intent);
             }
         });
 
-        imagenBotonMonitoreo.setOnClickListener(new View.OnClickListener() {
+        btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Ir a otra actividad
-                Intent intent = new Intent(MenuPrincipal.this, Monitoreo_Inicio.class);
+                Intent intent = new Intent(Monitoreo_Inicio.this, Monitoreo.class);
                 startActivity(intent);
             }
         });
-
-        imagenBotonFisioterapia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Ir a otra actividad
-                Intent intent = new Intent(MenuPrincipal.this, Fisioterapia.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
-
     }
 }
