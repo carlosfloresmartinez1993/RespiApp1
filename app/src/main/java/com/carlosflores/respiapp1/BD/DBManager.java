@@ -22,7 +22,7 @@ public class DBManager extends  DBHelper{
             db.execSQL("CREATE TABLE IF NOT EXISTS TABLA_REGISTRO (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "nombre TEXT NOT NULL, " +
-                    "edad INTEGER NOT NULL)");
+                    "curp TEXT NOT NULL)");
 
             ContentValues values = new ContentValues();
             values.put("nombre", nombre);

@@ -26,6 +26,7 @@ public class Fisioterapia extends AppCompatActivity {
       //codigo mio
         ImageView btn_regresar = findViewById(R.id.regresar_fisioterapia);
         ImageView btn_resp_diafragmatica = findViewById(R.id.resp_diafragmatica);
+        ImageView btn_resp_mov_brazos = findViewById(R.id.resp_mov_brazos);
 
         //redirigir si aprieto regresar
         btn_regresar.setOnClickListener(new View.OnClickListener() {
@@ -46,5 +47,15 @@ public class Fisioterapia extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //redirigir para resp mov brazos
+        btn_resp_mov_brazos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ir a otra actividad
+                Intent intent = new Intent(Fisioterapia.this, Resp_mov_brazos.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
