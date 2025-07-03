@@ -15,6 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RespiApp1"
         tools:targetApi="31">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.carlosflores.respiapp1.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <activity
             android:name=".Resp_mov_brazos_parar"
             android:exported="false" />
@@ -58,5 +67,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
