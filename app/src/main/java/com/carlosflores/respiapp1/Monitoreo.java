@@ -5,6 +5,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -28,6 +29,7 @@ import java.util.Date;
 public class Monitoreo extends AppCompatActivity {
     private static int MICROPHONE_PERMISSION_CODE = 200;
     private boolean estaGrabando = false;
+    private String rutaArchivo;
     MediaRecorder grabador;
 
     @Override
@@ -69,7 +71,7 @@ public class Monitoreo extends AppCompatActivity {
         });
 
         btnEnviar.setOnClickListener(v -> {
-
+            enviarGrabacion();
         });
 
         if (existeMicrofono()) {
@@ -100,7 +102,34 @@ public class Monitoreo extends AppCompatActivity {
     }
 
     public void enviarGrabacion() {
+        if(rutaArchivo == null) {
+            Toast.makeText(this,"No hay grabacion disponible",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        File archivo = new File(rutaArchivo);
+        if (!archivo.exists()) {
+            Toast.makeText(this,"Archivo no encontrado",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Uri uri = androidx.core.content.FileProvider.getUriForFile(
+                this,
+                getPackageName() + ".fileprovider",
+                archivo
+        );
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("audio/*");
+        intent.putExtra(Intent.EXTRA_STREAM,uri);
+        intent.setPackage("com.whatsapp");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        try {
+            startActivity(intent);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this, "Whatsapp no esta instalado",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean existeMicrofono() {
@@ -124,6 +153,7 @@ public class Monitoreo extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm_ss").format(new Date());
         String nombreArch = "Grabacion_" + timeStamp + ".mp3";
         File file = new File(directorioGrabar, nombreArch);
+        rutaArchivo = file.getAbsolutePath();
         return file.getPath();
     }
 }
