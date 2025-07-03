@@ -22,13 +22,15 @@
 
     <ImageView
         android:id="@+id/resp_diafragmatica"
-        android:layout_width="84dp"
-        android:layout_height="60dp"
+        android:layout_width="298dp"
+        android:layout_height="113dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:layout_constraintVertical_bias="0.173"
+        app:srcCompat="@drawable/resp_diafragmatica" />
 
     <TextView
         android:id="@+id/textView4"
@@ -46,13 +48,50 @@
 
     <ImageView
         android:id="@+id/resp_mov_brazos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="298dp"
+        android:layout_height="113dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.766"
-        app:srcCompat="@android:drawable/alert_light_frame" />
+        app:layout_constraintVertical_bias="0.355"
+        app:srcCompat="@drawable/resp_mov_brazos" />
+
+    <ImageView
+        android:id="@+id/resp_pajilla"
+        android:layout_width="298dp"
+        android:layout_height="113dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537"
+        app:srcCompat="@drawable/resp_pajilla" />
+
+    <ImageView
+        android:id="@+id/resp_cuadratica"
+        android:layout_width="298dp"
+        android:layout_height="113dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72"
+        app:srcCompat="@drawable/resp_cuadrada" />
+
+    <ImageView
+        android:id="@+id/palmopercusion"
+        android:layout_width="298dp"
+        android:layout_height="113dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902"
+        app:srcCompat="@drawable/palmopercusion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

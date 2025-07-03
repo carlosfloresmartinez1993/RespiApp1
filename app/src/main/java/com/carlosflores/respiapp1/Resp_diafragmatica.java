@@ -54,6 +54,21 @@ public class Resp_diafragmatica extends AppCompatActivity {
 
         configurarReproductor(id.play_e_resp_diafragmatica, raw.e_respiraciondiafragmatica);
 
+
+        //botones para iniciar ejercicio
+        Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica);
+        btn_resp_diafragmatica_iniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
+                Intent intent= new Intent(Resp_diafragmatica.this, Resp_diafragmatica_iniciar.class);
+                startActivity(intent);
+            }
+        });
+
     }
     private void configurarReproductor(int imageViewId, int audioResId) {
         ImageView imageView = findViewById(imageViewId);
@@ -103,14 +118,6 @@ public class Resp_diafragmatica extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica);
-        btn_resp_diafragmatica_iniciar.setOnClickListener(v -> {
-            //parar audios
-            onDestroy();
-            Intent intent = new Intent(this, Resp_diafragmatica_iniciar.class);
-            startActivity(intent);
-            overridePendingTransition(0, 0);
-        });
 
         ImageView btn_regresar = findViewById(R.id.regresar_fisioterapia1);
         btn_regresar.setOnClickListener(v -> {

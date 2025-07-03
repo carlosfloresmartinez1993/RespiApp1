@@ -17,6 +17,8 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class Resp_diafragmatica_parar extends AppCompatActivity {
 
+    private Chronometer cronometro;
+    private boolean corriendo = false; //para el cronometro
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +31,31 @@ public class Resp_diafragmatica_parar extends AppCompatActivity {
             return insets;
         });
 
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Button btn_resp_diafragmatica_parar = findViewById(R.id.btn_resp_diafragmatica_iniciar);
+        Button btn_resp_diafragmatica_parar = findViewById(R.id.btn_respiracion_diafragmatica_parar);
         btn_resp_diafragmatica_parar.setOnClickListener(v -> {
+            cronometro.stop();
             Intent intent = new Intent(this, Resp_diafragmatica.class);
             startActivity(intent);
             overridePendingTransition(0, 0);
         });
+
+        View imageView2 = findViewById(R.id.imageView2);
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Resp_diafragmatica_parar.this, Resp_diafragmatica.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        cronometro = findViewById(R.id.cronometro);
+        cronometro.setBase(SystemClock.elapsedRealtime());
+        cronometro.start();
+        corriendo = true;
+
     }
 }

@@ -1,10 +1,10 @@
 package com.carlosflores.respiapp1;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.carlosflores.respiapp1.BD.DBHelper;
+
 import com.carlosflores.respiapp1.BD.DBManager;
 
 public class RegistroActivity2 extends AppCompatActivity {
@@ -30,21 +30,39 @@ public class RegistroActivity2 extends AppCompatActivity {
         editTextEdad = findViewById(R.id.editTextEdad);
         buttonContinuar = findViewById(R.id.buttonContinuar);
 
+        //Verificar que no se ha guardado el registro por vez primera sino manda a otra pantalla
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
+        boolean yaRegistrado = prefs.getBoolean("registro_completado", false);
+
+        if (yaRegistrado) {
+            // Ya se registró antes → ir directo a la pantalla principal
+            startActivity(new Intent(this, MenuPrincipal.class));
+            finish(); // Para que no vuelva atrás
+        }
+
+
 
         buttonContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  DBHelper dbHelper= new DBHelper( RegistroActivity2.this);
+              if (TextUtils.isEmpty(editTextNombre.getText().toString().trim()) || TextUtils.isEmpty(editTextEdad.getText().toString().trim()) ){
+                  Toast.makeText( RegistroActivity2.this,"CAMPOS OBLIGARORIOS ", Toast.LENGTH_LONG).show();
+                  limpiar();
 
-
-
+              }else {
 
                 DBManager dbManager= new DBManager( RegistroActivity2.this);
-                long id = dbManager.insertar(editTextNombre.getText().toString(),
-                        Integer.parseInt(editTextEdad.getText().toString()));
+                long id = dbManager.insertar(editTextNombre.getText().toString(),editTextEdad.getText().toString());
                 if (id>0){
                     Toast.makeText( RegistroActivity2.this,"REGISTRO GUARDADO ", Toast.LENGTH_LONG).show();
                     limpiar();
+
+                    //no mostrar la proxima vez q ya se guarda
+                    SharedPreferences prefs = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("registro_completado", true);
+                    editor.apply();  // o commit()
+
 
                     // Redirigir después de un pequeño retraso para que el Toast se vea
                     new Handler().postDelayed(() -> {
@@ -56,6 +74,7 @@ public class RegistroActivity2 extends AppCompatActivity {
                 }else {
                     Toast.makeText( RegistroActivity2.this,"ERROR AL GUARDAR REGISTRO  ", Toast.LENGTH_LONG).show();
                 }
+            }
             }
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

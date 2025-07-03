@@ -5,15 +5,15 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.Editable;
 
-public class DBManager extends  DBHelper{
+public class DBManager {
     public static final String TABLA_REGISTRO = "Tabla_Registro";
     Context context;
     public DBManager(Context context) {
-        super(context);
+        //super(context);
         this.context= context;
     }
 
-    public  long insertar(String nombre, int edad){
+    public  long insertar(String nombre, String curp){
         long id =0;
         try {
           SQLiteDatabase db = context.openOrCreateDatabase("RespiApp.db", Context.MODE_PRIVATE, null);
@@ -26,7 +26,7 @@ public class DBManager extends  DBHelper{
 
             ContentValues values = new ContentValues();
             values.put("nombre", nombre);
-            values.put("edad", edad);
+            values.put("curp", curp);
 
             id= db.insert(TABLA_REGISTRO, null,values);
             db.close();

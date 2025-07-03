@@ -15,7 +15,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class Resp_diafragmatica_iniciar extends AppCompatActivity {
 
-    Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica_iniciar);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +27,20 @@ public class Resp_diafragmatica_iniciar extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica_iniciar);
         btn_resp_diafragmatica_iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Ir a otra actividad
                 Intent intent = new Intent(Resp_diafragmatica_iniciar.this, Resp_diafragmatica_parar.class);
+                startActivity(intent);
+            }
+        });
+        View imageView3 = findViewById(R.id.imageView3);
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Resp_diafragmatica_iniciar.this, Resp_diafragmatica.class);
                 startActivity(intent);
             }
         });
