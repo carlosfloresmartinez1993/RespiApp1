@@ -30,6 +30,7 @@ public class Resp_popote_iniciar extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(Resp_popote_iniciar.this, Resp_popote_parar.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -39,6 +40,7 @@ public class Resp_popote_iniciar extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(Resp_popote_iniciar.this, Resp_popote.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

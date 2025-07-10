@@ -1,8 +1,5 @@
 package com.carlosflores.respiapp1;
 
-import static com.carlosflores.respiapp1.R.*;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,64 +16,64 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Resp_diafragmatica extends AppCompatActivity {
+public class Resp_cuadrada extends AppCompatActivity {
+
     private boolean isPaused = false; // Estado para saber si se pausó
     private MediaPlayer mediaPlayer;
     private int currentAudioResId = -1; // para saber si se repite el mismo audio
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_resp_diafragmatica);
+        setContentView(R.layout.activity_resp_cuadrada);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-
-
-        WebView webView = findViewById(id.video_resp_diafragmatica);
+        WebView webView = findViewById(R.id.video_resp_cuadrada);
         webView.setWebChromeClient(new WebChromeClient()); // Necesario para reproducir video
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
-
-// Incrustar el video usando el ID de YouTube
+        // Incrustar el video usando el ID de YouTube
         String html = "<iframe width=\"100%\" height=\"100%\" " +
-                "src=\"https://www.youtube.com/embed/TuPaMCsnxes\" " +
+                "src=\"https://www.youtube.com/embed/2lORo7hzJBA\" " +
                 "frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" " +
                 "allowfullscreen></iframe>";
 
         webView.loadData(html, "text/html", "utf-8");
+        //reproducir el audio
+        configurarReproductor(R.id.play_e_resp_cuadrada, R.raw.e_respiracioncuadratica);
 
-        configurarReproductor(id.play_e_resp_diafragmatica, raw.e_respiraciondiafragmatica);
 
-
-        //botones para iniciar ejercicio
-        Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica);
-        btn_resp_diafragmatica_iniciar.setOnClickListener(new View.OnClickListener() {
+        //botones para iniciar el ejercicio
+        Button resp_cuadrada = findViewById(R.id.btn_resp_cuadrada);
+        resp_cuadrada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                     mediaPlayer = null;
                 }
-                Intent intent= new Intent(Resp_diafragmatica.this, Resp_diafragmatica_iniciar.class);
+                Intent intent = new Intent(Resp_cuadrada.this, Resp_cuadrada_iniciar.class);
                 startActivity(intent);
+                finish();
             }
         });
-        ImageView btn_regresar = findViewById(R.id.regresar_fisioterapia1);
-        btn_regresar.setOnClickListener(new View.OnClickListener() {
+        //regresar
+        View imageView3 = findViewById(R.id.regresar_fisioterapia_2);
+        imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //parar audios que se esten reproducioendo
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                     mediaPlayer = null;
                 }
-                Intent intent = new Intent(Resp_diafragmatica.this, Fisioterapia.class);
+                Intent intent= new Intent(Resp_cuadrada.this, Fisioterapia.class);
                 startActivity(intent);
                 finish();
             }
@@ -125,12 +122,5 @@ public class Resp_diafragmatica extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer = null;
         }
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-
     }
 }

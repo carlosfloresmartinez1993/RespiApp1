@@ -59,6 +59,7 @@ public class Resp_popote extends AppCompatActivity {
                 }
                 Intent intent = new Intent(Resp_popote.this, Resp_popote_iniciar.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -67,8 +68,13 @@ public class Resp_popote extends AppCompatActivity {
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
                 Intent intent= new Intent(Resp_popote.this, Fisioterapia.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -47,6 +47,7 @@ public class Resp_popote_parar extends AppCompatActivity {
                 cronometro.stop();
                 Intent intent = new Intent(this, Resp_popote.class);
                 startActivity(intent);
+                finish();
                 overridePendingTransition(0, 0);
             }else
                 Toast.makeText( Resp_popote_parar.this,"ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
@@ -60,6 +61,7 @@ public class Resp_popote_parar extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Resp_popote_parar.this, Resp_mov_brazos.class);
                 startActivity(intent);
+                finish();
             }
         });
 

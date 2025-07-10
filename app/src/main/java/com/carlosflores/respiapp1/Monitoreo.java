@@ -55,6 +55,7 @@ public class Monitoreo extends AppCompatActivity {
                 // Ir a otra actividad
                 Intent intent = new Intent(Monitoreo.this, MenuPrincipal.class);
                 startActivity(intent);
+                finish();
             }
         });
 

@@ -61,6 +61,7 @@ public class Resp_mov_brazos extends AppCompatActivity {
                 }
                 Intent intent = new Intent(Resp_mov_brazos.this, Resp_mov_brazos_iniciar.class);
                 startActivity(intent);
+                finish();
             }
         });
         //regresar
@@ -68,8 +69,13 @@ public class Resp_mov_brazos extends AppCompatActivity {
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
                 Intent intent= new Intent(Resp_mov_brazos.this, Fisioterapia.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -119,8 +125,5 @@ public class Resp_mov_brazos extends AppCompatActivity {
         }
     }
 
-    protected void onStart() {
-        super.onStart();
 
-    }
 }

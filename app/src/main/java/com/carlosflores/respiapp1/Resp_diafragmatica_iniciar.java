@@ -34,14 +34,17 @@ public class Resp_diafragmatica_iniciar extends AppCompatActivity {
                 // Ir a otra actividad
                 Intent intent = new Intent(Resp_diafragmatica_iniciar.this, Resp_diafragmatica_parar.class);
                 startActivity(intent);
+                finish();
             }
         });
         View imageView3 = findViewById(R.id.imageView3);
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent= new Intent(Resp_diafragmatica_iniciar.this, Resp_diafragmatica.class);
                 startActivity(intent);
+                finish();
             }
         });
 

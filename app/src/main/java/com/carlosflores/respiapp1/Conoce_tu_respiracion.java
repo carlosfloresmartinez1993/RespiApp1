@@ -41,10 +41,14 @@ public class Conoce_tu_respiracion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //parar audios que se esten reproducioendo
-                mediaPlayer.stop();
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
                 // Ir a otra actividad
                 Intent intent = new Intent(Conoce_tu_respiracion.this, MenuPrincipal.class);
                 startActivity(intent);
+                finish();
             }
         });
 

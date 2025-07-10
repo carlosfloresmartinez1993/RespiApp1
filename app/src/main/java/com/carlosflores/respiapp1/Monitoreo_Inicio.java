@@ -36,6 +36,7 @@ public class Monitoreo_Inicio extends AppCompatActivity {
                 // Ir a otra actividad
                 Intent intent = new Intent(Monitoreo_Inicio.this, MenuPrincipal.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -44,6 +45,7 @@ public class Monitoreo_Inicio extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Monitoreo_Inicio.this, Monitoreo.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

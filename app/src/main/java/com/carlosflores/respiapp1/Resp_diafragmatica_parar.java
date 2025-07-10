@@ -55,6 +55,7 @@ public class Resp_diafragmatica_parar extends AppCompatActivity {
                 cronometro.stop();
                 Intent intent = new Intent(this, Resp_diafragmatica.class);
                 startActivity(intent);
+                finish();
                 overridePendingTransition(0, 0);
             }else
                 Toast.makeText( Resp_diafragmatica_parar.this,"ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
@@ -68,6 +69,7 @@ public class Resp_diafragmatica_parar extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Resp_diafragmatica_parar.this, Resp_diafragmatica.class);
                 startActivity(intent);
+                finish();
             }
         });
 
