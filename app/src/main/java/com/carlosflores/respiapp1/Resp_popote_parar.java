@@ -16,29 +16,21 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.carlosflores.respiapp1.BD.DBManager;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-import pl.droidsonroids.gif.GifImageView;
-
-public class Resp_diafragmatica_parar extends AppCompatActivity {
-
+public class Resp_popote_parar extends AppCompatActivity {
     private Chronometer cronometro;
     private boolean corriendo = false; //para el cronometro
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_resp_diafragmatica_parar);
+        setContentView(R.layout.activity_resp_popote_parar);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button btn_resp_diafragmatica_parar = findViewById(R.id.btn_respiracion_diafragmatica_parar);
+        Button btn_resp_diafragmatica_parar = findViewById(R.id.btn_resp_popote_parar);
         btn_resp_diafragmatica_parar.setOnClickListener(v -> {
             //acceder a los datos del cronometro
             long tiempoTranscurrido = SystemClock.elapsedRealtime() - cronometro.getBase();
@@ -47,35 +39,34 @@ public class Resp_diafragmatica_parar extends AppCompatActivity {
             String tiempoFormateado = String.format("%02d:%02d", minutos, segundos);
 
             //guardar tiempo del cronometro en la base de datos
-            DBManager BD = new DBManager(Resp_diafragmatica_parar.this);
-            long id = BD.insertar_Resp_diafragmatica(tiempoFormateado);
+            DBManager BD = new DBManager(Resp_popote_parar.this);
+            long id = BD.insertar_Resp_popote(tiempoFormateado);
             if (id>0){
-                Toast.makeText( Resp_diafragmatica_parar.this,"REGISTRO GUARDADO ", Toast.LENGTH_LONG).show();
+                Toast.makeText( Resp_popote_parar.this,"REGISTRO GUARDADO ", Toast.LENGTH_LONG).show();
                 //parar cronometro
                 cronometro.stop();
-                Intent intent = new Intent(this, Resp_diafragmatica.class);
+                Intent intent = new Intent(this, Resp_popote.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }else
-                Toast.makeText( Resp_diafragmatica_parar.this,"ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
+                Toast.makeText( Resp_popote_parar.this,"ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
 
 
         });
 
-        View imageView2 = findViewById(R.id.imageView2);
+        View imageView2 = findViewById(R.id.regresar_fisioterapia_11);
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Resp_diafragmatica_parar.this, Resp_diafragmatica.class);
+                Intent intent = new Intent(Resp_popote_parar.this, Resp_mov_brazos.class);
                 startActivity(intent);
             }
         });
 
     }
-    @Override
     protected void onStart() {
         super.onStart();
-        cronometro = findViewById(R.id.cronometro);
+        cronometro = findViewById(R.id.cronometro1);
         cronometro.setBase(SystemClock.elapsedRealtime());
         cronometro.start();
         corriendo = true;

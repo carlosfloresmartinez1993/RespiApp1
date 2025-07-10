@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Resp_mov_brazos_iniciar extends AppCompatActivity {
-  Button resp_movi_brazos_iniciar = findViewById(R.id.btn_resp_diafragmatica_iniciar);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +23,21 @@ public class Resp_mov_brazos_iniciar extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        Button resp_movi_brazos_iniciar = findViewById(R.id.btn_resp_mov_brazos_iniciar);
         resp_movi_brazos_iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(Resp_mov_brazos_iniciar.this, Resp_mov_brazos_parar.class);
+                startActivity(intent);
+            }
+        });
+
+        View imageView3 = findViewById(R.id.regresar_fisioterapia_10);
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Resp_mov_brazos_iniciar.this, Resp_mov_brazos.class);
+                startActivity(intent);
             }
         });
     }

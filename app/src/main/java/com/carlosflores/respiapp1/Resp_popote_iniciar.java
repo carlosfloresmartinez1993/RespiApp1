@@ -11,45 +11,35 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import pl.droidsonroids.gif.GifImageView;
-
-public class Resp_diafragmatica_iniciar extends AppCompatActivity {
-
-
+public class Resp_popote_iniciar extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_resp_diafragmatica_iniciar);
+        setContentView(R.layout.activity_resp_popote_iniciar);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button btn_resp_diafragmatica_iniciar = findViewById(R.id.btn_resp_diafragmatica_iniciar);
-        btn_resp_diafragmatica_iniciar.setOnClickListener(new View.OnClickListener() {
+
+        Button resp_popote_iniciar = findViewById(R.id.btn_resp_poposte_iniciar);
+        resp_popote_iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Ir a otra actividad
-                Intent intent = new Intent(Resp_diafragmatica_iniciar.this, Resp_diafragmatica_parar.class);
-                startActivity(intent);
-            }
-        });
-        View imageView3 = findViewById(R.id.imageView3);
-        imageView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Resp_diafragmatica_iniciar.this, Resp_diafragmatica.class);
+                Intent intent= new Intent(Resp_popote_iniciar.this, Resp_popote_parar.class);
                 startActivity(intent);
             }
         });
 
+        View imageView31 = findViewById(R.id.regresar_fisioterapia_101);
+        imageView31.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Resp_popote_iniciar.this, Resp_popote.class);
+                startActivity(intent);
+            }
+        });
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-    }
-
 }

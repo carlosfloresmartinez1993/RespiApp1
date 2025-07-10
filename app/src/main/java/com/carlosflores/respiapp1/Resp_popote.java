@@ -16,24 +16,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Resp_mov_brazos extends AppCompatActivity {
+public class Resp_popote extends AppCompatActivity {
 
     private boolean isPaused = false; // Estado para saber si se pausó
     private MediaPlayer mediaPlayer;
     private int currentAudioResId = -1; // para saber si se repite el mismo audio
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_resp_mov_brazos);
+        setContentView(R.layout.activity_resp_popote);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        WebView webView = findViewById(R.id.video_resp_mov_brazos);
+        WebView webView = findViewById(R.id.video_resp_popote);
         webView.setWebChromeClient(new WebChromeClient()); // Necesario para reproducir video
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -41,39 +40,38 @@ public class Resp_mov_brazos extends AppCompatActivity {
         webSettings.setUseWideViewPort(true);
         // Incrustar el video usando el ID de YouTube
         String html = "<iframe width=\"100%\" height=\"100%\" " +
-                "src=\"https://www.youtube.com/embed/5aUcblTABhI\" " +
+                "src=\"https://www.youtube.com/embed/Et3JREIL-n4\" " +
                 "frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" " +
                 "allowfullscreen></iframe>";
 
         webView.loadData(html, "text/html", "utf-8");
-    //reproducir el audio
-       configurarReproductor(R.id.play_e_resp_mov_brazos, R.raw.e_respiracionconmovimientosdebrazos);
-
+        //reproducir el audio
+        configurarReproductor(R.id.play_e_resp_popote, R.raw.e_respiracionconpajilla);
 
         //botones para iniciar el ejercicio
-        Button resp_mov_brazos = findViewById(R.id.btn_resp_mov_brazos);
-        resp_mov_brazos.setOnClickListener(new View.OnClickListener() {
+        Button resp_popote = findViewById(R.id.btn_resp_popote);
+        resp_popote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                     mediaPlayer = null;
                 }
-                Intent intent = new Intent(Resp_mov_brazos.this, Resp_mov_brazos_iniciar.class);
+                Intent intent = new Intent(Resp_popote.this, Resp_popote_iniciar.class);
                 startActivity(intent);
             }
         });
+
         //regresar
-       View imageView3 = findViewById(R.id.regresar_fisioterapia_1);
+        View imageView3 = findViewById(R.id.regresar_fisioterapia_1);
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Resp_mov_brazos.this, Fisioterapia.class);
+                Intent intent= new Intent(Resp_popote.this, Fisioterapia.class);
                 startActivity(intent);
             }
         });
     }
-
     private void configurarReproductor(int imageViewId, int audioResId) {
         ImageView imageView = findViewById(imageViewId);
 
@@ -117,10 +115,5 @@ public class Resp_mov_brazos extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer = null;
         }
-    }
-
-    protected void onStart() {
-        super.onStart();
-
     }
 }
