@@ -16,21 +16,21 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.carlosflores.respiapp1.BD.DBManager;
 
-public class Resp_cuadrada_parar extends AppCompatActivity {
+public class Palmopercusion_parar extends AppCompatActivity {
+
     private Chronometer cronometro;
     private boolean corriendo = false; //para el cronometro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_resp_cuadrada_parar);
+        setContentView(R.layout.activity_palmopercusion_parar);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        Button btn_resp_cuadrada_parar = findViewById(R.id.btn_resp_cuadrada_parar);
+        Button btn_resp_cuadrada_parar = findViewById(R.id.btn_palmopercusion_parar);
         btn_resp_cuadrada_parar.setOnClickListener(v -> {
             //acceder a los datos del cronometro
             long tiempoTranscurrido = SystemClock.elapsedRealtime() - cronometro.getBase();
@@ -39,27 +39,27 @@ public class Resp_cuadrada_parar extends AppCompatActivity {
             String tiempoFormateado = String.format("%02d:%02d", minutos, segundos);
 
             //guardar tiempo del cronometro en la base de datos
-            DBManager BD = new DBManager(Resp_cuadrada_parar.this);
-            long id = BD.insertar_Resp_cuadrada(tiempoFormateado);
+            DBManager BD = new DBManager(Palmopercusion_parar.this);
+            long id = BD.insertar_Palmopercusion(tiempoFormateado);
             if (id>0){
-                Toast.makeText( Resp_cuadrada_parar.this,"REGISTRO GUARDADO ", Toast.LENGTH_LONG).show();
+                Toast.makeText( Palmopercusion_parar.this,"REGISTRO GUARDADO ", Toast.LENGTH_LONG).show();
                 //parar cronometro
                 cronometro.stop();
-                Intent intent = new Intent(this, Resp_cuadrada.class);
+                Intent intent = new Intent(this, Palmopercusion.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(0, 0);
             }else
-                Toast.makeText( Resp_cuadrada_parar.this,"ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
+                Toast.makeText( Palmopercusion_parar.this,"ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
 
 
         });
 
-        View imageView2 = findViewById(R.id.regresar_fisioterapia_111);
+        View imageView2 = findViewById(R.id.regresar_fisioterapia_112);
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Resp_cuadrada_parar.this, Resp_cuadrada.class);
+                Intent intent = new Intent(Palmopercusion_parar.this, Palmopercusion.class);
                 startActivity(intent);
                 finish();
             }
@@ -69,7 +69,7 @@ public class Resp_cuadrada_parar extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        cronometro = findViewById(R.id.cronometro2);
+        cronometro = findViewById(R.id.cronometro3);
         cronometro.setBase(SystemClock.elapsedRealtime());
         cronometro.start();
         corriendo = true;

@@ -29,6 +29,7 @@ public class Fisioterapia extends AppCompatActivity {
         ImageView btn_resp_mov_brazos = findViewById(R.id.resp_mov_brazos);
         ImageView btn_resp_pajilla = findViewById(R.id.resp_pajilla);
         ImageView btn_resp_cuadratica = findViewById(R.id.resp_cuadratica);
+        ImageView btn_palmopercusion = findViewById(R.id.palmopercusion);
 
         //redirigir si aprieto regresar
         btn_regresar.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +75,16 @@ public class Fisioterapia extends AppCompatActivity {
             public void onClick(View v) {
                 //ir a otra actividad
                 Intent intent = new Intent(Fisioterapia.this, Resp_cuadrada.class);
+                startActivity(intent);
+            }
+        });
+
+        //redirigir para palmopercusion
+        btn_palmopercusion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ir a otra actividad
+                Intent intent = new Intent(Fisioterapia.this, Palmopercusion.class);
                 startActivity(intent);
             }
         });

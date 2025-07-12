@@ -118,4 +118,25 @@ public class DBManager {
         }
         return  id;
     }
+
+    public  long insertar_Palmopercusion(String tiempo){
+        long id =0;
+        try {
+            SQLiteDatabase db = context.openOrCreateDatabase("RespiApp.db", Context.MODE_PRIVATE, null);
+
+            // Asegúrate de que la tabla exista
+            db.execSQL("CREATE TABLE IF NOT EXISTS PALMOPERCUSION (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "tiempo TEXT NOT NULL, " +
+                    "fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+
+            ContentValues values = new ContentValues();
+            values.put("tiempo", tiempo);
+            id= db.insert("RESP_MOVBRAZOS", null,values);
+            db.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return  id;
+    }
 }

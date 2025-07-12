@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Resp_cuadrada_iniciar">
+    tools:context=".Palmopercusion_iniciar">
 
     <Button
-        android:id="@+id/btn_resp_cuadrada_iniciar"
+        android:id="@+id/btn_palmopercusion_iniciar"
         android:layout_width="276dp"
         android:layout_height="84dp"
         android:text="Iniciar"
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Respiración cuadrada"
+        android:text="Palmopercusión"
         android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.06" />
 
     <ImageView
-        android:id="@+id/regresar_fisioterapia_101"
+        android:id="@+id/regresar_fisioterapia_102"
         android:layout_width="165dp"
         android:layout_height="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.182"
-        app:srcCompat="@drawable/e_respiracioncuadrada" />
+        app:srcCompat="@drawable/e_palmopercusion" />
 
     <TextView
         android:id="@+id/textView7"
@@ -66,9 +66,8 @@
         android:layout_height="189dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Regálate este momento para respirar y
-         relajarte. Tu bienestar
-         comienza con una buena respiración."
+        android:text="Realiza este ejercicio
+        para ayudar a movilizar tus secreciones pulmonares."
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

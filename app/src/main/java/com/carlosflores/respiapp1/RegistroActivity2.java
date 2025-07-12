@@ -1,7 +1,15 @@
 package com.carlosflores.respiapp1;
 
+import android.Manifest;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -12,11 +20,18 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.carlosflores.respiapp1.BD.DBManager;
+import com.carlosflores.respiapp1.Notificaciones.NotificacionReceiver;
+
+import java.util.Calendar;
 
 public class RegistroActivity2 extends AppCompatActivity {
  EditText editTextEdad, editTextNombre ;
@@ -89,4 +104,7 @@ public class RegistroActivity2 extends AppCompatActivity {
        editTextEdad.setText("");
        editTextNombre.setText("");
    }
-}
+
+
+
+  }
