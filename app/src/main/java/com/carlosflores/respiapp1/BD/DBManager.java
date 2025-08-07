@@ -2,6 +2,7 @@ package com.carlosflores.respiapp1.BD;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.Editable;
 
@@ -139,4 +140,63 @@ public class DBManager {
         }
         return  id;
     }
+
+    public Cursor obtenerPrimerUsuario() {
+        SQLiteDatabase db = context.openOrCreateDatabase("RespiApp.db", Context.MODE_PRIVATE, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM TABLA_REGISTRO ORDER BY id ASC LIMIT 1", null);
+        return cursor;
+    }
+    public Cursor obtenerUltimoRegistro(String nombreTabla) {
+        SQLiteDatabase db = context.openOrCreateDatabase("RespiApp.db", Context.MODE_PRIVATE, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + nombreTabla + " ORDER BY id DESC LIMIT 1", null);
+        return cursor;
+    }
+
+    public String valores() {
+        String diafragma = "", brazos = "", popote = "", cuadrada = "", palmo = "", usuario = "";
+
+        Cursor cursor = obtenerUltimoRegistro("RESP_DIAFRAGMATICA");
+        if (cursor != null && cursor.moveToFirst()) {
+            diafragma = cursor.getString(cursor.getColumnIndexOrThrow("tiempo"));
+            cursor.close();
+        }
+
+        Cursor cursor1 = obtenerUltimoRegistro("RESP_MOVBRAZOS");
+        if (cursor1 != null && cursor1.moveToFirst()) {
+            brazos = cursor1.getString(cursor1.getColumnIndexOrThrow("tiempo"));
+            cursor1.close();
+        }
+
+        Cursor cursor2 = obtenerUltimoRegistro("RESP_POPOTE");
+        if (cursor2 != null && cursor2.moveToFirst()) {
+            popote = cursor2.getString(cursor2.getColumnIndexOrThrow("tiempo"));
+            cursor2.close();
+        }
+
+        Cursor cursor3 = obtenerUltimoRegistro("RESP_CUADRADA");
+        if (cursor3 != null && cursor3.moveToFirst()) {
+            cuadrada = cursor3.getString(cursor3.getColumnIndexOrThrow("tiempo"));
+            cursor3.close();
+        }
+
+        Cursor cursor4 = obtenerUltimoRegistro("PALMOPERCUSION");
+        if (cursor4 != null && cursor4.moveToFirst()) {
+            palmo = cursor4.getString(cursor4.getColumnIndexOrThrow("tiempo"));
+            cursor4.close();
+        }
+
+        Cursor cursor5 = obtenerPrimerUsuario();
+        if (cursor5 != null && cursor5.moveToFirst()) {
+            usuario = cursor5.getString(cursor5.getColumnIndexOrThrow("nombre"));
+            cursor5.close();
+        }
+
+        return "Hola " + usuario + ", este es tu resumen semanal:\n\n" +
+                "• Respiración diafragmática: " + diafragma + "\n" +
+                "• Movimiento de brazos: " + brazos + "\n" +
+                "• Respiración con popote: " + popote + "\n" +
+                "• Respiración cuadrada: " + cuadrada + "\n" +
+                "• Palmopercusión: " + palmo;
+    }
+
 }

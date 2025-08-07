@@ -18,6 +18,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -99,6 +100,8 @@ public class Monitoreo extends AppCompatActivity {
         grabador.stop();
         grabador.release();
         grabador = null;
+        File f = new File(rutaArchivo);
+
         Toast.makeText(this,"Grabacion finalizada",Toast.LENGTH_LONG).show();
     }
 
@@ -109,6 +112,8 @@ public class Monitoreo extends AppCompatActivity {
         }
 
         File archivo = new File(rutaArchivo);
+
+
         if (!archivo.exists()) {
             Toast.makeText(this,"Archivo no encontrado",Toast.LENGTH_SHORT).show();
             return;
@@ -152,9 +157,10 @@ public class Monitoreo extends AppCompatActivity {
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
         File directorioGrabar = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm_ss").format(new Date());
-        String nombreArch = "Grabacion_" + timeStamp + ".mp3";
+        String nombreArch = "Grabacion_" + timeStamp + ".wav";
         File file = new File(directorioGrabar, nombreArch);
         rutaArchivo = file.getAbsolutePath();
         return file.getPath();
     }
+
 }

@@ -64,7 +64,7 @@
         android:id="@+id/gifView"
         android:layout_width="162dp"
         android:layout_height="170dp"
-        android:src="@drawable/circulo_guia_animado"
+        android:src="@drawable/respiracion_diafragmatica"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

@@ -1,17 +1,16 @@
 package com.carlosflores.respiapp1;
 
-import android.Manifest;
-import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -20,18 +19,14 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.carlosflores.respiapp1.BD.DBManager;
-import com.carlosflores.respiapp1.Notificaciones.NotificacionReceiver;
+import com.carlosflores.respiapp1.Notificaciones.NotificacionUtils;
 
-import java.util.Calendar;
+
 
 public class RegistroActivity2 extends AppCompatActivity {
  EditText editTextEdad, editTextNombre ;
@@ -44,6 +39,9 @@ public class RegistroActivity2 extends AppCompatActivity {
         editTextNombre = findViewById(R.id.editTextNombre);
         editTextEdad = findViewById(R.id.editTextEdad);
         buttonContinuar = findViewById(R.id.buttonContinuar);
+
+        solicitarPermisoNotificaciones();
+        verificarYSolicitarPermisoBateria();
 
         //Verificar que no se ha guardado el registro por vez primera sino manda a otra pantalla
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", MODE_PRIVATE);
@@ -97,14 +95,37 @@ public class RegistroActivity2 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
-    }
+        NotificacionUtils.programarProximoSabado(this);
+     }
    public  void limpiar(){
        editTextEdad.setText("");
        editTextNombre.setText("");
    }
 
+    private void verificarYSolicitarPermisoBateria() {
+        SharedPreferences prefs = getSharedPreferences("prefs_app", MODE_PRIVATE);
+        boolean yaPidioPermiso = prefs.getBoolean("permiso_bateria_pedido", false);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (!pm.isIgnoringBatteryOptimizations(getPackageName()) && !yaPidioPermiso) {
+                Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
 
-  }
+                // Guardar que ya se pidió el permiso
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("permiso_bateria_pedido", true);
+                editor.apply();
+            }
+        }
+    }
+    private void solicitarPermisoNotificaciones() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1001);
+            }
+        }
+    }
+
+}

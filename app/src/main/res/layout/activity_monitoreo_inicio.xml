@@ -11,17 +11,18 @@
 
     <TextView
         android:id="@+id/titulo_mon_inicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="69dp"
         android:fontFamily="sans-serif-black"
-        android:text="Guía de colocación de sensor"
-        android:textSize="24sp"
+        android:text="Pegue el micrófono sobre alguno de los puntos señalados"
         android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintVertical_bias="0.135" />
 
     <Button
         android:id="@+id/btnContinuar"
@@ -59,6 +60,7 @@
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/instrucciones_sensores" />
+        app:layout_constraintVertical_bias="0.503"
+        app:srcCompat="@drawable/torax" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

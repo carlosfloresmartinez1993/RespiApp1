@@ -14,19 +14,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Recuerda inhalar y exhalar por la nariz"
+        android:text="Respire por la nariz.
+Presione Grabar para iniciar, Detener para parar, y Enviar para revisar su respiración."
         android:textAlignment="center"
-        android:textSize="19dp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.519" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageButton2"
-        android:layout_width="223dp"
-        android:layout_height="231dp"
+        android:layout_width="187dp"
+        android:layout_height="148dp"
         android:background="@drawable/btn_circular_background"
         android:backgroundTint="#241B6A"
         android:clickable="true"
@@ -36,10 +38,9 @@
         android:tint="#F2F2F2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.323"
+        app:layout_constraintVertical_bias="0.252"
         app:shapeAppearanceOverlay="@style/CircularImageShape"
         app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
@@ -48,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Monitoreo Respiratorio"
+        android:text="Grabar mi respiración"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
