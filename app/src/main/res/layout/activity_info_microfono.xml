@@ -20,4 +20,48 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/btnregresar" />
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="275dp"
+        android:layout_height="267dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133"
+        app:srcCompat="@drawable/piezoelectrico" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="343dp"
+        android:layout_height="303dp"
+        android:fontFamily="sans-serif-black"
+        android:justificationMode="inter_word"
+        android:text="Dispositivo imprescindible para la captura de la respiración. Tenga en cuenta que existen
+direntes modelos que funcionan correctamente. Encuéntrelo en su electrónica mas cercana como micrófono para guitarra"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.639" />
+
+    <TextView
+        android:id="@+id/txtEnlace"
+        android:layout_width="345dp"
+        android:layout_height="152dp"
+        android:autoLink="web"
+        android:fontFamily="sans-serif-black"
+        android:linksClickable="true"
+        android:text="Visita: https://www.mercadolibre.com.mx/"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.926" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
