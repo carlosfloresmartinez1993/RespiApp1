@@ -5,14 +5,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
 
     <application
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,6 +22,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RespiApp1"
         tools:targetApi="31">
+        <activity
+            android:name=".InfoMicrofono"
+            android:exported="false" />
+        <activity
+            android:name=".Informacion"
+            android:exported="false" />
         <activity
             android:name=".Palmopercusion_parar"
             android:exported="false" />
@@ -59,7 +65,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
 
         <activity
             android:name=".Resp_mov_brazos_parar"
@@ -107,17 +112,13 @@
         <receiver
             android:name=".Notificaciones.NotificacionReceiver"
             android:exported="true" />
-        <receiver android:name=".Notificaciones.BootReceiver"
+        <receiver
+            android:name=".Notificaciones.BootReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
-
-
-
-
     </application>
 
 </manifest>

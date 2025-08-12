@@ -11,38 +11,19 @@
 
     <TextView
         android:id="@+id/instrucciones_mon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="374dp"
+        android:layout_height="213dp"
         android:fontFamily="sans-serif-black"
-        android:text="Respire por la nariz.
-Presione Grabar para iniciar, Detener para parar, y Enviar para revisar su respiración."
-        android:textAlignment="center"
+        android:justificationMode="inter_word"
+        android:text="Respire por la nariz. Presione Grabar para iniciar, Detener para parar, y Enviar para revisar su respiración."
+
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageButton2"
-        android:layout_width="187dp"
-        android:layout_height="148dp"
-        android:background="@drawable/btn_circular_background"
-        android:backgroundTint="#241B6A"
-        android:clickable="true"
-        android:contentDescription="@string/botones"
-        android:focusable="true"
-        android:scaleType="centerCrop"
-        android:tint="#F2F2F2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252"
-        app:shapeAppearanceOverlay="@style/CircularImageShape"
-        app:srcCompat="@android:drawable/ic_btn_speak_now" />
+        app:layout_constraintVertical_bias="0.385" />
 
     <TextView
         android:id="@+id/titulo_mon"
@@ -62,8 +43,8 @@ Presione Grabar para iniciar, Detener para parar, y Enviar para revisar su respi
         android:id="@+id/btnGrabar"
         android:layout_width="219dp"
         android:layout_height="100dp"
-        android:text="Grabar"
         android:fontFamily="sans-serif-black"
+        android:text="Grabar"
         android:textColor="#000000"
         android:textSize="30sp"
         app:backgroundTint="#7dd5f6"
@@ -71,7 +52,7 @@ Presione Grabar para iniciar, Detener para parar, y Enviar para revisar su respi
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.749" />
+        app:layout_constraintVertical_bias="0.706" />
 
     <Button
         android:id="@+id/btnEnviar"

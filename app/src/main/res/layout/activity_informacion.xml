@@ -6,26 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:textAlignment="center"
-    tools:context=".Monitoreo_Inicio">
+    tools:context=".Informacion">
 
     <TextView
-        android:id="@+id/titulo_mon_inicio"
-        android:layout_width="360dp"
-        android:layout_height="69dp"
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
         android:fontFamily="sans-serif-black"
-        android:text="Pegue el micrófono sobre alguno de los puntos señalados"
-        android:textAlignment="center"
-        android:textSize="24sp"
+        android:text="Bienvenido a tu App Respiratoria"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <Button
-        android:id="@+id/btnContinuar"
+        android:id="@+id/buttonContinuar1"
         android:layout_width="219dp"
         android:layout_height="100dp"
         android:fontFamily="sans-serif-black"
@@ -36,42 +33,51 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
 
-    <ImageView
-        android:id="@+id/regresar_monitoreo"
-        android:layout_width="165dp"
-        android:layout_height="51dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Cuidamos tu respiración."
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/btnregresar" />
+        app:layout_constraintVertical_bias="0.191" />
 
-    <ImageView
-        android:id="@+id/imageView8"
+    <TextView
+        android:id="@+id/textView11"
         android:layout_width="375dp"
-        android:layout_height="415dp"
+        android:layout_height="223dp"
+        android:fontFamily="sans-serif-black"
+        android:justificationMode="inter_word"
+        android:lineSpacingExtra="2dp"
+        android:text="Aprende sobre salud pulmonar, realiza ejercicios respiratorios y envía la grabación de tu respiración a tu médico por WhatsApp para que la analice."
+        android:textSize="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.503"
-        app:srcCompat="@drawable/torax" />
+        app:layout_constraintVertical_bias="0.401" />
 
-    <ImageView
-        android:id="@+id/imageMicro"
-        android:layout_width="92dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="152dp"
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="376dp"
+        android:layout_height="132dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-black"
+        android:justificationMode="inter_word"
+        android:text="No reemplace la consulta médica. Es mejor prevenir que lamentar"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.987"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/micro" />
+        app:layout_constraintVertical_bias="0.776" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

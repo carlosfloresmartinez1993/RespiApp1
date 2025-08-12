@@ -49,6 +49,7 @@ public class Monitoreo extends AppCompatActivity {
         Button btnGrabar = findViewById(R.id.btnGrabar);
         Button btnEnviar = findViewById(R.id.btnEnviar);
 
+
         //redirigir si aprieto regresar
         btn_regresar.setOnClickListener(new View.OnClickListener() {
             @Override

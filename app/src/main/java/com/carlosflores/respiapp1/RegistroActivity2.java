@@ -49,7 +49,7 @@ public class RegistroActivity2 extends AppCompatActivity {
 
         if (yaRegistrado) {
             // Ya se registró antes → ir directo a la pantalla principal
-            startActivity(new Intent(this, MenuPrincipal.class));
+            startActivity(new Intent(this, Informacion.class));
             finish(); // Para que no vuelva atrás
         }
 
@@ -79,7 +79,7 @@ public class RegistroActivity2 extends AppCompatActivity {
 
                     // Redirigir después de un pequeño retraso para que el Toast se vea
                     new Handler().postDelayed(() -> {
-                        Intent intent = new Intent(RegistroActivity2.this, MenuPrincipal.class); // reemplaza MenuPrincipal con tu destino
+                        Intent intent = new Intent(RegistroActivity2.this, Informacion.class); // reemplaza MenuPrincipal con tu destino
                         startActivity(intent);
                         finish(); // Opcional: para que no puedan volver con el botón "atrás"
                     }, 0);
