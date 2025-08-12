@@ -30,6 +30,7 @@ import java.util.Date;
 public class Monitoreo extends AppCompatActivity {
     private static int MICROPHONE_PERMISSION_CODE = 200;
     private boolean estaGrabando = false;
+    private Button btnEnviar;
     private String rutaArchivo;
     MediaRecorder grabador;
 
@@ -47,7 +48,8 @@ public class Monitoreo extends AppCompatActivity {
         //codigo mio
         ImageView btn_regresar = findViewById(R.id.regresar_monitoreo);
         Button btnGrabar = findViewById(R.id.btnGrabar);
-        Button btnEnviar = findViewById(R.id.btnEnviar);
+        btnEnviar = findViewById(R.id.btnEnviar);
+        btnEnviar.setEnabled(false);
 
 
         //redirigir si aprieto regresar
@@ -101,6 +103,7 @@ public class Monitoreo extends AppCompatActivity {
         grabador.stop();
         grabador.release();
         grabador = null;
+        btnEnviar.setEnabled(true);
         File f = new File(rutaArchivo);
 
         Toast.makeText(this,"Grabacion finalizada",Toast.LENGTH_LONG).show();
